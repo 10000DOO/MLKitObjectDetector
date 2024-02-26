@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4335E5CB4357410E5DDAD24D /* Pods_MLKitObjectDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4537BB841E0B81C9B7435696 /* Pods_MLKitObjectDetector.framework */; };
 		6920E7D92B8C1B4400E6DA81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6920E7D82B8C1B4400E6DA81 /* AppDelegate.swift */; };
 		6920E7DB2B8C1B4400E6DA81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6920E7DA2B8C1B4400E6DA81 /* SceneDelegate.swift */; };
 		6920E7DD2B8C1B4400E6DA81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6920E7DC2B8C1B4400E6DA81 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B47482828D52D5773FB4365 /* Pods-MLKitObjectDetector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKitObjectDetector.debug.xcconfig"; path = "Target Support Files/Pods-MLKitObjectDetector/Pods-MLKitObjectDetector.debug.xcconfig"; sourceTree = "<group>"; };
+		4537BB841E0B81C9B7435696 /* Pods_MLKitObjectDetector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLKitObjectDetector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6920E7D52B8C1B4400E6DA81 /* MLKitObjectDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLKitObjectDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6920E7D82B8C1B4400E6DA81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6920E7DA2B8C1B4400E6DA81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		6920E7E12B8C1B4500E6DA81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6920E7E42B8C1B4500E6DA81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6920E7E62B8C1B4500E6DA81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF0D6B4F891E88FE0DACC829 /* Pods-MLKitObjectDetector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKitObjectDetector.release.xcconfig"; path = "Target Support Files/Pods-MLKitObjectDetector/Pods-MLKitObjectDetector.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4335E5CB4357410E5DDAD24D /* Pods_MLKitObjectDetector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D66D4B78E73E4C02EF4ACED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B47482828D52D5773FB4365 /* Pods-MLKitObjectDetector.debug.xcconfig */,
+				CF0D6B4F891E88FE0DACC829 /* Pods-MLKitObjectDetector.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6920E7CC2B8C1B4400E6DA81 = {
 			isa = PBXGroup;
 			children = (
 				6920E7D72B8C1B4400E6DA81 /* MLKitObjectDetector */,
 				6920E7D62B8C1B4400E6DA81 /* Products */,
+				0D66D4B78E73E4C02EF4ACED /* Pods */,
+				EE216543C3FB8846DC2262C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +83,14 @@
 			path = MLKitObjectDetector;
 			sourceTree = "<group>";
 		};
+		EE216543C3FB8846DC2262C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4537BB841E0B81C9B7435696 /* Pods_MLKitObjectDetector.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6920E7E92B8C1B4500E6DA81 /* Build configuration list for PBXNativeTarget "MLKitObjectDetector" */;
 			buildPhases = (
+				546396DB35154DBFFA37E6AC /* [CP] Check Pods Manifest.lock */,
 				6920E7D12B8C1B4400E6DA81 /* Sources */,
 				6920E7D22B8C1B4400E6DA81 /* Frameworks */,
 				6920E7D32B8C1B4400E6DA81 /* Resources */,
+				A67B53BB2B85C926DEED62FB /* [CP] Embed Pods Frameworks */,
+				DAA2E3F58D1256D95162F743 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		546396DB35154DBFFA37E6AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MLKitObjectDetector-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A67B53BB2B85C926DEED62FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MLKitObjectDetector/Pods-MLKitObjectDetector-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MLKitObjectDetector/Pods-MLKitObjectDetector-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MLKitObjectDetector/Pods-MLKitObjectDetector-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAA2E3F58D1256D95162F743 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MLKitObjectDetector/Pods-MLKitObjectDetector-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MLKitObjectDetector/Pods-MLKitObjectDetector-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MLKitObjectDetector/Pods-MLKitObjectDetector-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6920E7D12B8C1B4400E6DA81 /* Sources */ = {
@@ -287,12 +373,14 @@
 		};
 		6920E7EA2B8C1B4500E6DA81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B47482828D52D5773FB4365 /* Pods-MLKitObjectDetector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 26L95KN5AP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MLKitObjectDetector/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -315,12 +403,14 @@
 		};
 		6920E7EB2B8C1B4500E6DA81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF0D6B4F891E88FE0DACC829 /* Pods-MLKitObjectDetector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 26L95KN5AP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MLKitObjectDetector/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
