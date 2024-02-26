@@ -8,25 +8,33 @@
 import UIKit
 import MLKitVision
 import MLKitObjectDetection
+import MLKitImageLabeling
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var lblOutput: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBAction func doObjectDetection(_ sender: Any) {
         runObjectDetection(with: imageView.image!)
     }
     
+    var theImage = UIImage(named:"1.jpg")
+    // We'll have a var to hold all the labels
+    var labeltexts = ""
+    var currentLabel = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(named: "1.jpg")
+        lblOutput.textColor = .green
+        imageView.image = theImage
         imageView.addSubview(annotationOverlayView)
         NSLayoutConstraint.activate([
             annotationOverlayView.topAnchor.constraint(equalTo: imageView.topAnchor),
             annotationOverlayView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             annotationOverlayView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
             annotationOverlayView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
-        ])
-    }
+        ])    }
+    
     
     /// An overlay view that displays detection annotations.
     private lazy var annotationOverlayView: UIView = {
@@ -51,20 +59,51 @@ class ViewController: UIViewController {
         
     }
     
-    func processResult(from detectedObjects: [Object]?, error: Error?){
+    func processResult(from detectedObjects: [Object]?, error: Error?) {
+        currentLabel = 0
         guard let detectedObjects = detectedObjects else{
             return
         }
-        
         for obj in detectedObjects{
+            currentLabel+=1
             let transform = self.transformMatrix()
             let transformedRect = obj.frame.applying(transform)
             self.addRectangle(
                 transformedRect,
-                to: self.annotationOverlayView
-                
+                to: self.annotationOverlayView,
+                current: currentLabel
             )
+            
+            guard let cutImageRef: CGImage = theImage?.cgImage?.cropping(to: obj.frame) else {break}
+            let croppedImage: UIImage = UIImage(cgImage: cutImageRef)
+            
+            let visionImage = VisionImage(image: croppedImage)
+            visionImage.orientation = croppedImage.imageOrientation
+            let options = ImageLabelerOptions()
+            options.confidenceThreshold = 0.4
+            let labeler = ImageLabeler.imageLabeler(options: options)
+            labeler.process(visionImage) {labels, error in
+                self.processLabellingResult(from: labels, error: error)
+            }
+            
+            
         }
+    }
+    
+    // This gets called by the labeler's callback
+    func processLabellingResult(from labels: [ImageLabel]?, error: Error?){
+        // Check that we have valid labels first
+        guard let labels = labels else{
+            return
+        }
+        // ...and if we do we can iterate through the set to get the description and confidence
+        for label in labels{
+            let labelText = label.text + " : " + label.confidence.description + "\n"
+            self.labeltexts += labelText
+        }
+        // And when we're done we can update the UI with the list of labels
+        self.labeltexts += "\n"
+        self.lblOutput.text = self.labeltexts
     }
     
     private func transformMatrix() -> CGAffineTransform {
@@ -92,13 +131,24 @@ class ViewController: UIViewController {
         return transform
     }
     
-    private func addRectangle(_ rectangle: CGRect, to view: UIView) {
+    private func addRectangle(_ rectangle: CGRect, to view: UIView, current: Int) {
         let rectangleView = UIView(frame: rectangle)
         rectangleView.layer.cornerRadius = 2.0
         rectangleView.layer.borderWidth = 4
         rectangleView.layer.borderColor = UIColor.red.cgColor
         
+        let labelView = UILabel(frame: rectangle)
+        labelView.text = String(current)
+        labelView.textColor = UIColor.black
+        labelView.backgroundColor = UIColor.red
+        labelView.textAlignment = NSTextAlignment.left
+        labelView.numberOfLines = 0
+        labelView.sizeToFit()
+        
+        
         view.addSubview(rectangleView)
+        view.addSubview(labelView)
+        
     }
+    
 }
-
